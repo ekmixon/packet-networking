@@ -133,6 +133,10 @@ class IPAddressList(WhereList):
     def not_management(self):
         return self.where(management=False, skip_missing=False, missing_default=False)
 
+    @property
+    def dhcp(self):
+        return self.where(dhcp=True)
+
     def where(self, *args, **kwargs):
         return IPAddressList(super().where(*args, **kwargs))
 

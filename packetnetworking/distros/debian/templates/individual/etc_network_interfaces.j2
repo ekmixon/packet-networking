@@ -2,6 +2,9 @@ auto lo
 iface lo inet loopback
 
 auto {{ iface0.name }}
+{% if dhcp %}
+iface {{ iface0.name }} inet dhcp
+{% else %}
 iface {{ iface0.name }} inet static
     {% if ip4pub %}
     address {{ ip4pub.address }}
@@ -31,4 +34,5 @@ iface {{ iface0.name }}:0 inet static
     post-up route add -net {{ subnet }} gw {{ ip4priv.gateway }}
     post-down route del -net {{ subnet }} gw {{ ip4priv.gateway }}
     {% endfor %}
+{% endif %}
 {% endif %}

@@ -42,6 +42,10 @@ class DistroBuilder(utils.Tasks):
     def ipv4priv(self):
         return self.network.addresses.management.private.ipv4
 
+    @property
+    def dhcp(self):
+        return self.network.addresses.management.public.dhcp
+
     def build(self):
         """
         Build triggers all build functions to build the list of tasks needing
@@ -80,6 +84,7 @@ class DistroBuilder(utils.Tasks):
             "ip4priv": self.ipv4priv.first,
             "ip4pub": self.ipv4pub.first,
             "ip6pub": self.ipv6pub.first,
+            "dhcp": self.dhcp.first,
             "net": self.network,
             "osinfo": self.metadata.operating_system,
             "resolvers": self.network.resolvers,

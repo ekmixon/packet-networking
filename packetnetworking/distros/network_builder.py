@@ -18,3 +18,7 @@ class NetworkBuilder(Tasks):
     @property
     def ipv4priv(self):
         return self.network.addresses.management.private.ipv4
+
+    @property
+    def dhcp(self):
+        return self.network.addresses.management.public.dhcp

@@ -1,7 +1,7 @@
 from .. import DistroBuilder
 from .bonded import RedhatBondedNetwork
 from .individual import RedhatIndividualNetwork
-
+from .dhcp import RedhatDhcpNetwork
 
 class RedhatBuilder(DistroBuilder):
     distros = [
@@ -10,7 +10,7 @@ class RedhatBuilder(DistroBuilder):
         "redhatenterprise",
         "scientificcernslc",
     ]
-    network_builders = [RedhatBondedNetwork, RedhatIndividualNetwork]
+    network_builders = [RedhatBondedNetwork, RedhatIndividualNetwork, RedhatDhcpNetwork]
 
     def build_tasks(self):
         self.tasks = {}
