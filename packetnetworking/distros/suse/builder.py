@@ -1,11 +1,12 @@
 from .. import DistroBuilder
 from .bonded import SuseBondedNetwork
 from .individual import SuseIndividualNetwork
+from .dhcp import SuseDhcpNetwork
 
 
 class SuseBuilder(DistroBuilder):
     distros = ["opensuseproject", "suselinux", "suse"]
-    network_builders = [SuseBondedNetwork, SuseIndividualNetwork]
+    network_builders = [SuseBondedNetwork, SuseIndividualNetwork, SuseDhcpNetwork]
 
     def build_tasks(self):
         self.tasks = {}
