@@ -185,6 +185,7 @@ def test_distro_builder_context_as_expected(fake_distro_builder_with_metadata):
         "osinfo": fake_distro.metadata.operating_system,
         "private_subnets": fake_distro.network.private_subnets,
         "resolvers": fake_distro.network.resolvers,
+        "dhcp": fake_distro.dhcp,
     }
 
     assert context == wanted_context

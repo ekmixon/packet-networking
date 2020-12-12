@@ -44,7 +44,7 @@ class DistroBuilder(utils.Tasks):
 
     @property
     def dhcp(self):
-        return self.network.addresses.management.public.dhcp
+        return self.network.dhcp
 
     def build(self):
         """
@@ -84,7 +84,7 @@ class DistroBuilder(utils.Tasks):
             "ip4priv": self.ipv4priv.first,
             "ip4pub": self.ipv4pub.first,
             "ip6pub": self.ipv6pub.first,
-            "dhcp": self.dhcp.first,
+            "dhcp": self.dhcp,
             "net": self.network,
             "osinfo": self.metadata.operating_system,
             "resolvers": self.network.resolvers,

@@ -1,0 +1,5 @@
+auto lo
+iface lo inet loopback
+
+auto {{ iface0.name }}
+iface {{ iface0.name }} inet dhcp

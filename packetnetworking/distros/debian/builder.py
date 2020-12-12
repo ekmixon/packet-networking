@@ -1,11 +1,12 @@
 from .. import DistroBuilder
 from .bonded import DebianBondedNetwork
 from .individual import DebianIndividualNetwork
+from .dhcp import DebianDhcpNetwork
 
 
 class DebianBuilder(DistroBuilder):
     distros = ["debian", "ubuntu"]
-    network_builders = [DebianBondedNetwork, DebianIndividualNetwork]
+    network_builders = [DebianBondedNetwork, DebianIndividualNetwork, DebianDhcpNetwork]
 
     def build_tasks(self):
         self.tasks = {}

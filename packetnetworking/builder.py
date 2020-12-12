@@ -79,6 +79,7 @@ class NetworkData(object):
         self.addresses = None
         self.resolvers = default_resolvers
         self.private_subnets = default_private_subnets
+        self.dhcp = None
 
     def load(self, nw_metadata):
         self.nw_metadata = nw_metadata
@@ -87,6 +88,7 @@ class NetworkData(object):
         self.build_bonds()
         self.build_addresses()
         self.build_resolvers()
+        self.build_dhcp()
 
     def build_bonding(self):
         self.bonding = self.nw_metadata.bonding
@@ -121,6 +123,9 @@ class NetworkData(object):
     def build_resolvers(self):
         self.resolvers = utils.resolvers(self.resolvers)
 
+    def build_dhcp(self):
+        self.dhcp = None
+
     def as_dict(self):
         return {
             "bonding": self.bonding,
@@ -129,4 +134,5 @@ class NetworkData(object):
             "addresses": self.addresses,
             "resolvers": self.resolvers,
             "private_subnets": self.private_subnets,
+            "dhcp": self.dhcp,
         }

@@ -1,2 +1,7 @@
+{% if 'enp0' in iface0.name %}
 STARTMODE='hotplug'
 BOOTPROTO='dhcp'
+{% else %}
+STARTMODE='auto'
+BOOTPROTO='none'
+{% endif %}
