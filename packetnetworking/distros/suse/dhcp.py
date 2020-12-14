@@ -4,7 +4,7 @@ from .. import NetworkBuilder
 # pylama:ignore=E501
 class SuseDhcpNetwork(NetworkBuilder):
     def build(self):
-        if self.network.bonding.link_aggregation == "dhcp":
+        if self.network.bonding.link_aggregation == "individual":
             self.build_tasks()
 
     def build_tasks(self):

@@ -97,6 +97,7 @@ def generic_redhat_dhcp_network(redhatbuilder, patch_dict):
         metadata = patch_dict(
             {
                 "network": {
+                    "bonding": {"link_aggregation": "individual"},
                     "dhcp": {
                         "arch": "x86_64",
                         "hostname": "tink-worker",

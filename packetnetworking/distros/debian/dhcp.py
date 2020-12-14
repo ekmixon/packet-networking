@@ -5,7 +5,7 @@ from ...utils import generate_persistent_names
 # pylama:ignore=E501
 class DebianDhcpNetwork(NetworkBuilder):
     def build(self):
-        if self.network.bonding.link_aggregation == "dhcp":
+        if self.network.bonding.link_aggregation == "individual":
             self.build_tasks()
 
     def build_tasks(self):

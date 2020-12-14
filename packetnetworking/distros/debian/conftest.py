@@ -97,6 +97,7 @@ def generic_debian_dhcp_network(debianbuilder, patch_dict):
         metadata = patch_dict(
             {
                 "network": {
+                    "bonding": {"link_aggregation": "individual"},
                     "dhcp": {
                         "arch": "x86_64",
                         "hostname": "tink-worker",
