@@ -11,16 +11,6 @@ def suse_dhcp_network(generic_suse_dhcp_network):
     return _builder
 
 
-def test_suse_private_only_throws_error(suse_dhcp_network):
-    """
-    Verifies a jinja2 UndefinedError is thrown when providing only
-    private ip information
-    """
-    builder = suse_dhcp_network(public=False)
-    with pytest.raises(UndefinedError):
-        builder.render()
-
-
 def test_suse_public_task_etc_sysconfig_network_ifcfg_enp1(suse_dhcp_network):
     """
     For each interface, we should see the corresponding ifcfg file

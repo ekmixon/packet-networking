@@ -10,17 +10,6 @@ def opensuseproject_dhcp_network(generic_suse_dhcp_network):
 
     return _builder
 
-
-def test_opensuseproject_private_only_throws_error(opensuseproject_dhcp_network):
-    """
-    Verifies a jinja2 UndefinedError is thrown when providing only
-    private ip information
-    """
-    builder = opensuseproject_dhcp_network(public=False)
-    with pytest.raises(UndefinedError):
-        builder.render()
-
-
 # pylama:ignore=E501
 def test_opensuseproject_dhcp_task_etc_sysconfig_network_ifcfg_enp0(
     opensuseproject_dhcp_network
@@ -33,10 +22,6 @@ def test_opensuseproject_dhcp_task_etc_sysconfig_network_ifcfg_enp0(
         STARTMODE='hotplug'
         BOOTPROTO='dhcp'
     """
-    ).format(
-        ipv4pub=builder.ipv4pub.first,
-        ipv4priv=builder.ipv4priv.first,
-        ipv6pub=builder.ipv6pub.first,
     )
     assert tasks["etc/sysconfig/network/ifcfg-enp0"] == result
 

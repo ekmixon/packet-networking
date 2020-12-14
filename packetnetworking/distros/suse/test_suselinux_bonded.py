@@ -11,16 +11,6 @@ def suselinux_bonded_network(generic_suse_bonded_network):
     return _builder
 
 
-def test_suselinux_private_only_throws_error(suselinux_bonded_network):
-    """
-    Verifies a jinja2 UndefinedError is thrown when providing only
-    private ip information
-    """
-    builder = suselinux_bonded_network(public=False)
-    with pytest.raises(UndefinedError):
-        builder.render()
-
-
 # pylama:ignore=E501
 def test_suselinux_bonded_task_etc_modprobe_d_bonding(suselinux_bonded_network):
     """Validates /etc/modprobe.d/bonding.conf has correct bonding mode"""

@@ -11,16 +11,6 @@ def suselinux_dhcp_network(generic_suse_dhcp_network):
     return _builder
 
 
-def test_suselinux_private_only_throws_error(suselinux_dhcp_network):
-    """
-    Verifies a jinja2 UndefinedError is thrown when providing only
-    private ip information
-    """
-    builder = suselinux_dhcp_network(public=False)
-    with pytest.raises(UndefinedError):
-        builder.render()
-
-
 def test_suselinux_dhcp_task_etc_sysconfig_network_ifcfg_enp0(
     suselinux_dhcp_network
 ):
@@ -47,7 +37,7 @@ def test_suselinux_public_task_etc_sysconfig_network_ifcfg_enp1(
     tasks = builder.render()
     result = dedent(
         """\
-        STARTMODE='auto'
+        STARTMODE='hotplug'
         BOOTPROTO='none'
     """
     )
